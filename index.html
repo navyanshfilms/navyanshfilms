@@ -1,0 +1,2945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Navyansh Films | Cinematic Content Creators</title>
+
+    <meta name="description"
+        content="Navyansh Films creates cinematic stories, mythology documentaries, professional video editing, photography, graphic design and visual experiences.">
+
+    <meta name="keywords"
+        content="Navyansh Films, cinematic films, video editing, cinematography, mythology documentaries, photography, videography, storytelling, graphic design">
+
+    <meta name="author" content="Navyansh Films">
+
+    <meta property="og:title" content="Navyansh Films | Cinematic Content Creators">
+    <meta property="og:description"
+        content="Cinematic storytelling, filmmaking, editing, photography and visual creation.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/og-banner.png">
+
+    <meta name="theme-color" content="#050505">
+
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =========================================================
+           NAVYANSH FILMS
+           FINAL CINEMATIC WEBSITE
+           PURE HTML + CSS + VANILLA JS
+           NO REACT
+           NO TAILWIND
+           NO LUCIDE
+           ========================================================= */
+
+        :root {
+            --gold-light: #fbf5b7;
+            --gold-main: #bf953f;
+            --gold-mid: #d4af37;
+            --gold-dark: #8a641c;
+
+            --black: #000000;
+            --bg: #050505;
+            --bg-2: #080808;
+            --card: #0f0f0f;
+            --card-2: #141414;
+
+            --white: #ffffff;
+            --text: #eeeeee;
+            --muted: #a3a3a3;
+            --border: rgba(191,149,63,0.20);
+
+            --container: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Montserrat", sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        ::selection {
+            background: var(--gold-main);
+            color: #000;
+        }
+
+        /* =========================================================
+           GLOBAL
+           ========================================================= */
+
+        .container {
+            width: min(92%, var(--container));
+            margin: auto;
+        }
+
+        .section {
+            padding: 110px 0;
+            position: relative;
+        }
+
+        .section-dark {
+            background: #050505;
+        }
+
+        .section-soft {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(191,149,63,0.07), transparent 35%),
+                #080808;
+        }
+
+        .eyebrow {
+            font-family: "Montserrat", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-main);
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-family: "Cinzel", serif;
+            font-size: clamp(34px, 5vw, 62px);
+            line-height: 1.08;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+            background: linear-gradient(
+                90deg,
+                var(--gold-light),
+                var(--gold-main),
+                var(--gold-dark)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-text {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .center .section-text {
+            margin: auto;
+        }
+
+        .gold-line {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--gold-main),
+                transparent
+            );
+            margin: 25px auto;
+        }
+
+        /* =========================================================
+           BACKGROUND EFFECTS
+           ========================================================= */
+
+        .noise {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            opacity: 0.035;
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        }
+
+        .ambient-glow {
+            pointer-events: none;
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(191,149,63,0.055);
+            filter: blur(100px);
+        }
+
+        /* =========================================================
+           NAVBAR
+           ========================================================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 22px 0;
+            transition: 0.35s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(191,149,63,0.14);
+            padding: 14px 0;
+        }
+
+        .nav-inner {
+            width: min(92%, 1400px);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--gold-main);
+            display: grid;
+            place-items: center;
+            transform: rotate(45deg);
+        }
+
+        .brand-mark-inner {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(
+                135deg,
+                var(--gold-light),
+                var(--gold-dark)
+            );
+        }
+
+        .brand-name {
+            font-family: "Cinzel", serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(
+                90deg,
+                var(--gold-light),
+                var(--gold-main),
+                var(--gold-dark)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .nav-links a {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d1d1d1;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 1px;
+            background: var(--gold-main);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 11px 20px;
+            border: 1px solid var(--gold-main);
+            color: var(--gold-light) !important;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(191,149,63,0.4);
+            background: transparent;
+            color: var(--gold-light);
+            font-size: 22px;
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.60),
+                    rgba(0,0,0,0.84)
+                ),
+                url("assets/background-main-bg.jpg") center/cover no-repeat;
+
+            background-color: #050505;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    ellipse at center,
+                    transparent 15%,
+                    rgba(0,0,0,0.55) 75%,
+                    #000 100%
+                );
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 220px;
+            background: linear-gradient(
+                transparent,
+                #050505
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(95%, 1100px);
+            padding-top: 80px;
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            color: var(--gold-main);
+            margin-bottom: 25px;
+        }
+
+        .hero-title {
+            font-family: "Cinzel", serif;
+            font-size: clamp(48px, 9vw, 130px);
+            line-height: 0.95;
+            letter-spacing: 8px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 10px 60px rgba(0,0,0,0.8);
+        }
+
+        .hero-title span {
+            display: block;
+            background: linear-gradient(
+                90deg,
+                #fff6bd 0%,
+                #bf953f 40%,
+                #fbf5b7 60%,
+                #8a641c 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            max-width: 720px;
+            margin: 35px auto 0;
+            color: #d0d0d0;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .hero-buttons {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 175px;
+            padding: 15px 27px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.35s;
+        }
+
+        .btn-gold {
+            color: #080808;
+            background: linear-gradient(
+                135deg,
+                var(--gold-light),
+                var(--gold-main)
+            );
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(191,149,63,0.20);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(251,245,183,0.45);
+            color: #fff;
+            background: rgba(0,0,0,0.25);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-main);
+            color: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            z-index: 5;
+            left: 50%;
+            bottom: 32px;
+            transform: translateX(-50%);
+            color: #aaa;
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 45px;
+            background: linear-gradient(
+                var(--gold-main),
+                transparent
+            );
+            margin: 10px auto 0;
+        }
+
+        /* =========================================================
+           ABOUT
+           ========================================================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            min-height: 560px;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.08),
+                    rgba(0,0,0,0.45)
+                ),
+                url("assets/about-team.jpg") center/cover no-repeat;
+            background-color: #111;
+        }
+
+        .about-image::before {
+            content: "";
+            position: absolute;
+            inset: 20px;
+            border: 1px solid rgba(251,245,183,0.3);
+            pointer-events: none;
+        }
+
+        .about-image::after {
+            content: "NAVYANSH FILMS";
+            position: absolute;
+            bottom: 35px;
+            left: 35px;
+            font-family: "Cinzel", serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--gold-light);
+        }
+
+        .about-copy p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.95;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 35px;
+        }
+
+        .stat {
+            padding: 22px 10px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            font-family: "Cinzel", serif;
+            color: var(--gold-light);
+            font-size: 26px;
+        }
+
+        .stat span {
+            color: #888;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           SERVICES
+           ========================================================= */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            min-height: 330px;
+            position: relative;
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: 0.45s ease;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(191,149,63,0.55);
+        }
+
+        .service-bg {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            transition: 0.7s ease;
+            opacity: 0.48;
+        }
+
+        .service-card:hover .service-bg {
+            transform: scale(1.08);
+            opacity: 0.65;
+        }
+
+        .service-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    transparent 15%,
+                    rgba(0,0,0,0.90) 90%
+                );
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 2;
+            padding: 28px;
+        }
+
+        .service-number {
+            font-family: "Cinzel", serif;
+            color: rgba(251,245,183,0.55);
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .service-title {
+            font-family: "Cinzel", serif;
+            color: #fff;
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .service-text {
+            color: #aaa;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           PORTFOLIO
+           ========================================================= */
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 60px;
+        }
+
+        .portfolio-card {
+            position: relative;
+            min-height: 360px;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .portfolio-image {
+            position: absolute;
+            inset: 0;
+            background-position: center;
+            background-size: cover;
+            transition: 0.7s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image {
+            transform: scale(1.08);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    transparent 20%,
+                    rgba(0,0,0,0.88)
+                );
+        }
+
+        .portfolio-info {
+            position: absolute;
+            left: 25px;
+            right: 25px;
+            bottom: 25px;
+        }
+
+        .portfolio-category {
+            color: var(--gold-main);
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .portfolio-title {
+            font-family: "Cinzel", serif;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        /* =========================================================
+           PROCESS
+           ========================================================= */
+
+        .process-grid {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: rgba(191,149,63,0.18);
+        }
+
+        .process-step {
+            min-height: 250px;
+            padding: 30px 22px;
+            background: #080808;
+            position: relative;
+        }
+
+        .process-number {
+            font-family: "Cinzel", serif;
+            font-size: 35px;
+            color: rgba(191,149,63,0.3);
+            margin-bottom: 25px;
+        }
+
+        .process-title {
+            font-family: "Cinzel", serif;
+            color: #fff;
+            font-size: 19px;
+            margin-bottom: 12px;
+        }
+
+        .process-text {
+            color: #888;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           WHY NAVYANSH
+           ========================================================= */
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 55px;
+        }
+
+        .why-card {
+            padding: 38px 30px;
+            background: linear-gradient(
+                145deg,
+                #101010,
+                #070707
+            );
+            border: 1px solid rgba(255,255,255,0.07);
+            transition: 0.35s;
+        }
+
+        .why-card:hover {
+            border-color: rgba(191,149,63,0.45);
+            transform: translateY(-5px);
+        }
+
+        .why-icon {
+            width: 52px;
+            height: 52px;
+            border: 1px solid rgba(191,149,63,0.5);
+            display: grid;
+            place-items: center;
+            color: var(--gold-light);
+            font-family: "Cinzel", serif;
+            margin-bottom: 25px;
+        }
+
+        .why-card h3 {
+            font-family: "Cinzel", serif;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .why-card p {
+            color: #888;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* =========================================================
+           CTA
+           ========================================================= */
+
+        .cta {
+            position: relative;
+            overflow: hidden;
+            padding: 130px 0;
+            text-align: center;
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.68),
+                    rgba(0,0,0,0.88)
+                ),
+                url("assets/cta-bg.jpg") center/cover no-repeat;
+            background-color: #090909;
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(191,149,63,0.13),
+                    transparent 55%
+                );
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(35px, 6vw, 72px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 650px;
+            margin: auto;
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .cta .btn {
+            margin-top: 35px;
+        }
+
+        /* =========================================================
+           CONTACT
+           ========================================================= */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 70px;
+            margin-top: 60px;
+        }
+
+        .contact-info h3 {
+            font-family: "Cinzel", serif;
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .contact-info > p {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 17px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .contact-symbol {
+            color: var(--gold-main);
+            font-size: 16px;
+            width: 25px;
+        }
+
+        .contact-item small {
+            display: block;
+            color: #666;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .contact-item a,
+        .contact-item span {
+            color: #ddd;
+            font-size: 13px;
+        }
+
+        .contact-form {
+            padding: 38px;
+            background: #0b0b0b;
+            border: 1px solid rgba(191,149,63,0.16);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field label {
+            display: block;
+            color: #888;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            background: #050505;
+            border: 1px solid rgba(255,255,255,0.10);
+            color: #fff;
+            padding: 14px 15px;
+            outline: none;
+            font-size: 13px;
+            transition: 0.25s;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: rgba(191,149,63,0.65);
+        }
+
+        .field textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .field select {
+            appearance: auto;
+        }
+
+        .form-submit {
+            width: 100%;
+            border: 0;
+            margin-top: 5px;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        footer {
+            padding: 60px 0 25px;
+            background: #000;
+            border-top: 1px solid rgba(191,149,63,0.12);
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr 1fr;
+            gap: 45px;
+            padding-bottom: 45px;
+        }
+
+        .footer-brand p {
+            max-width: 340px;
+            color: #666;
+            font-size: 12px;
+            line-height: 1.9;
+            margin-top: 18px;
+        }
+
+        .footer-title {
+            font-size: 10px;
+            color: var(--gold-main);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .footer-links a {
+            color: #777;
+            font-size: 12px;
+            transition: 0.25s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: #555;
+            font-size: 10px;
+        }
+
+        /* =========================================================
+           REVEAL ANIMATION
+           ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: min(330px, 85%);
+                height: 100vh;
+                padding: 100px 35px 40px;
+                background: rgba(5,5,5,0.98);
+                backdrop-filter: blur(20px);
+                border-left: 1px solid rgba(191,149,63,0.15);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+                transition: 0.35s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: relative;
+                z-index: 120;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 450px;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .hero-title {
+                font-size: clamp(43px, 14vw, 80px);
+                letter-spacing: 3px;
+            }
+
+            .hero-kicker {
+                font-size: 9px;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 13px;
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .why-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card,
+            .portfolio-card {
+                min-height: 330px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+            .brand-mark {
+                width: 31px;
+                height: 31px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Grain -->
+    <div class="noise"></div>
+
+
+    <!-- =========================================================
+         NAVIGATION
+         ========================================================= -->
+
+    <header class="navbar" id="navbar">
+
+        <div class="nav-inner">
+
+            <a href="#home" class="brand">
+
+                <div class="brand-mark">
+                    <div class="brand-mark-inner"></div>
+                </div>
+
+                <div class="brand-name">
+                    NAVYANSH FILMS
+                </div>
+
+            </a>
+
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="#home">Home</a>
+
+                <a href="#about">About</a>
+
+                <a href="#services">Services</a>
+
+                <a href="#portfolio">Portfolio</a>
+
+                <a href="#process">Process</a>
+
+                <a href="#contact" class="nav-cta">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open Menu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content reveal">
+
+                <div class="hero-kicker">
+                    Cinema • Story • Creation
+                </div>
+
+                <h1 class="hero-title">
+                    <span>NAVYANSH</span>
+                    FILMS
+                </h1>
+
+                <p class="hero-subtitle">
+                    We create cinematic stories, visual experiences
+                    and creative content designed to leave an impact.
+                    From mythology and documentaries to professional
+                    editing, photography and visual storytelling.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#portfolio" class="btn btn-gold">
+                        Explore Our Work
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Start A Project
+                    </a>
+
+                </div>
+
+            </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ABOUT
+             ===================================================== -->
+
+        <section class="section section-dark" id="about">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div class="about-image reveal"></div>
+
+
+                    <div class="about-copy reveal">
+
+                        <div class="eyebrow">
+                            Who We Are
+                        </div>
+
+                        <h2 class="section-title">
+                            Stories That <span>Feel Cinematic.</span>
+                        </h2>
+
+                        <p>
+                            Navyansh Films is a cinematic content and
+                            visual storytelling studio focused on creating
+                            powerful visual experiences.
+                        </p>
+
+                        <p>
+                            We combine filmmaking, cinematography,
+                            professional video editing, photography,
+                            graphic design and storytelling to transform
+                            ideas into memorable visual narratives.
+                        </p>
+
+                        <p>
+                            Our approach is built around atmosphere,
+                            emotion, composition, sound, pacing and
+                            cinematic presentation.
+                        </p>
+
+
+                        <div class="about-stats">
+
+                            <div class="stat">
+                                <strong>01</strong>
+                                <span>Vision</span>
+                            </div>
+
+                            <div class="stat">
+                                <strong>02</strong>
+                                <span>Story</span>
+                            </div>
+
+                            <div class="stat">
+                                <strong>03</strong>
+                                <span>Creation</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SERVICES
+             ===================================================== -->
+
+        <section class="section section-soft" id="services">
+
+            <div class="container">
+
+                <div class="center reveal">
+
+                    <div class="eyebrow">
+                        What We Create
+                    </div>
+
+                    <h2 class="section-title">
+                        Our <span>Creative Services</span>
+                    </h2>
+
+                    <p class="section-text">
+                        From concept development to final delivery,
+                        Navyansh Films brings cinematic thinking into
+                        every stage of visual production.
+                    </p>
+
+                </div>
+
+
+                <div class="services-grid">
+
+
+                    <!-- 01 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/01-video-editing-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                01
+                            </div>
+
+                            <h3 class="service-title">
+                                Video Editing
+                            </h3>
+
+                            <p class="service-text">
+                                Professional cinematic editing,
+                                pacing, transitions, sound design,
+                                color grading and final delivery.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 02 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/02-cinematography-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                02
+                            </div>
+
+                            <h3 class="service-title">
+                                Cinematography
+                            </h3>
+
+                            <p class="service-text">
+                                Cinematic camera work, composition,
+                                lighting, movement and visual direction.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 03 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/03-photography-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                03
+                            </div>
+
+                            <h3 class="service-title">
+                                Photography
+                            </h3>
+
+                            <p class="service-text">
+                                Portrait, product, cinematic,
+                                conceptual and creative photography.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 04 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/04-videography-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                04
+                            </div>
+
+                            <h3 class="service-title">
+                                Videography
+                            </h3>
+
+                            <p class="service-text">
+                                Professional video production for
+                                brands, creators, events and projects.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 05 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/05-storytelling-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                05
+                            </div>
+
+                            <h3 class="service-title">
+                                Storytelling
+                            </h3>
+
+                            <p class="service-text">
+                                Narrative development, emotional
+                                structure and cinematic storytelling.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 06 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/06-script-writing-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                06
+                            </div>
+
+                            <h3 class="service-title">
+                                Script Writing
+                            </h3>
+
+                            <p class="service-text">
+                                Concept-to-script development for
+                                films, documentaries and digital content.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 07 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/07-voice-over-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                07
+                            </div>
+
+                            <h3 class="service-title">
+                                Voice Over
+                            </h3>
+
+                            <p class="service-text">
+                                Character-driven and cinematic
+                                voice-over production for visual media.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 08 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/08-graphic-design-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                08
+                            </div>
+
+                            <h3 class="service-title">
+                                Graphic Design
+                            </h3>
+
+                            <p class="service-text">
+                                Posters, thumbnails, titles, branding
+                                visuals and cinematic artwork.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 09 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/09-motion-graphics-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                09
+                            </div>
+
+                            <h3 class="service-title">
+                                Motion Graphics
+                            </h3>
+
+                            <p class="service-text">
+                                Cinematic titles, animated graphics,
+                                visual effects and motion design.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 10 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/10-documentary-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                10
+                            </div>
+
+                            <h3 class="service-title">
+                                Documentaries
+                            </h3>
+
+                            <p class="service-text">
+                                Research-driven documentary production
+                                with cinematic visual storytelling.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 11 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/11-mythology-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                11
+                            </div>
+
+                            <h3 class="service-title">
+                                Mythology Films
+                            </h3>
+
+                            <p class="service-text">
+                                Cinematic mythology content,
+                                historical narratives and epic visual worlds.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- 12 -->
+
+                    <article class="service-card reveal">
+
+                        <div
+                            class="service-bg"
+                            style="background-image:url('assets/12-brand-content-bg.jpg');">
+                        </div>
+
+                        <div class="service-overlay"></div>
+
+                        <div class="service-content">
+
+                            <div class="service-number">
+                                12
+                            </div>
+
+                            <h3 class="service-title">
+                                Brand Content
+                            </h3>
+
+                            <p class="service-text">
+                                Cinematic promotional videos and visual
+                                content designed for modern brands.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PORTFOLIO
+             ===================================================== -->
+
+        <section class="section section-dark" id="portfolio">
+
+            <div class="container">
+
+                <div class="center reveal">
+
+                    <div class="eyebrow">
+                        Selected Work
+                    </div>
+
+                    <h2 class="section-title">
+                        Our <span>Portfolio</span>
+                    </h2>
+
+                    <p class="section-text">
+                        A visual collection of cinematic projects,
+                        stories, experiments and creative work.
+                    </p>
+
+                </div>
+
+
+                <div class="portfolio-grid">
+
+
+                    <a
+                        href="#contact"
+                        class="portfolio-card reveal">
+
+                        <div
+                            class="portfolio-image"
+                            style="background-image:url('assets/portfolio-01.jpg');">
+                        </div>
+
+                        <div class="portfolio-overlay"></div>
+
+                        <div class="portfolio-info">
+
+                            <div class="portfolio-category">
+                                Cinematic Film
+                            </div>
+
+                            <div class="portfolio-title">
+                                Visual Story
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="portfolio-card reveal">
+
+                        <div
+                            class="portfolio-image"
+                            style="background-image:url('assets/portfolio-02.jpg');">
+                        </div>
+
+                        <div class="portfolio-overlay"></div>
+
+                        <div class="portfolio-info">
+
+                            <div class="portfolio-category">
+                                Mythology
+                            </div>
+
+                            <div class="portfolio-title">
+                                Epic Narrative
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="portfolio-card reveal">
+
+                        <div
+                            class="portfolio-image"
+                            style="background-image:url('assets/portfolio-03.jpg');">
+                        </div>
+
+                        <div class="portfolio-overlay"></div>
+
+                        <div class="portfolio-info">
+
+                            <div class="portfolio-category">
+                                Documentary
+                            </div>
+
+                            <div class="portfolio-title">
+                                The Journey
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="portfolio-card reveal">
+
+                        <div
+                            class="portfolio-image"
+                            style="background-image:url('assets/portfolio-04.jpg');">
+                        </div>
+
+                        <div class="portfolio-overlay"></div>
+
+                        <div class="portfolio-info">
+
+                            <div class="portfolio-category">
+                                Photography
+                            </div>
+
+                            <div class="portfolio-title">
+                                Frame & Light
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="portfolio-card reveal">
+
+                        <div
+                            class="portfolio-image"
+                            style="background-image:url('assets/portfolio-05.jpg');">
+                        </div>
+
+                        <div class="portfolio-overlay"></div>
+
+                        <div class="portfolio-info">
+
+                            <div class="portfolio-category">
+                                Editing
+                            </div>
+
+                            <div class="portfolio-title">
+                                Cinematic Cut
+                            </div>
+
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="portfolio-card reveal">
+
+                        <div
+                            class="portfolio-image"
+                            style="background-image:url('assets/portfolio-06.jpg');">
+                        </div>
+
+                        <div class="portfolio-overlay"></div>
+
+                        <div class="portfolio-info">
+
+                            <div class="portfolio-category">
+                                Brand Film
+                            </div>
+
+                            <div class="portfolio-title">
+                                Brand Story
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PROCESS
+             ===================================================== -->
+
+        <section class="section section-soft" id="process">
+
+            <div class="container">
+
+                <div class="center reveal">
+
+                    <div class="eyebrow">
+                        How We Work
+                    </div>
+
+                    <h2 class="section-title">
+                        From Idea To <span>Screen.</span>
+                    </h2>
+
+                    <p class="section-text">
+                        A structured creative workflow designed to
+                        transform an initial idea into a complete
+                        cinematic visual experience.
+                    </p>
+
+                </div>
+
+
+                <div class="process-grid">
+
+
+                    <div class="process-step reveal">
+
+                        <div class="process-number">
+                            01
+                        </div>
+
+                        <h3 class="process-title">
+                            Ideation
+                        </h3>
+
+                        <p class="process-text">
+                            Understanding the concept, audience,
+                            purpose and visual direction.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-step reveal">
+
+                        <div class="process-number">
+                            02
+                        </div>
+
+                        <h3 class="process-title">
+                            Script
+                        </h3>
+
+                        <p class="process-text">
+                            Developing narrative structure,
+                            screenplay, dialogue and storytelling.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-step reveal">
+
+                        <div class="process-number">
+                            03
+                        </div>
+
+                        <h3 class="process-title">
+                            Visuals
+                        </h3>
+
+                        <p class="process-text">
+                            Building the visual language through
+                            references, storyboards and cinematography.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-step reveal">
+
+                        <div class="process-number">
+                            04
+                        </div>
+
+                        <h3 class="process-title">
+                            Production
+                        </h3>
+
+                        <p class="process-text">
+                            Capturing, designing, editing and producing
+                            the visual content.
+                        </p>
+
+                    </div>
+
+
+                    <div class="process-step reveal">
+
+                        <div class="process-number">
+                            05
+                        </div>
+
+                        <h3 class="process-title">
+                            Final Cut
+                        </h3>
+
+                        <p class="process-text">
+                            Color, sound, finishing and final cinematic
+                            delivery for the required platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WHY NAVYANSH
+             ===================================================== -->
+
+        <section class="section section-dark">
+
+            <div class="container">
+
+                <div class="center reveal">
+
+                    <div class="eyebrow">
+                        Our Philosophy
+                    </div>
+
+                    <h2 class="section-title">
+                        Why <span>Navyansh Films?</span>
+                    </h2>
+
+                    <p class="section-text">
+                        We approach every project as a visual story,
+                        not simply as a collection of shots.
+                    </p>
+
+                </div>
+
+
+                <div class="why-grid">
+
+
+                    <div class="why-card reveal">
+
+                        <div class="why-icon">
+                            01
+                        </div>
+
+                        <h3>
+                            Cinematic Thinking
+                        </h3>
+
+                        <p>
+                            Composition, lighting, camera movement,
+                            pacing and sound are considered together
+                            to create a cohesive visual language.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card reveal">
+
+                        <div class="why-icon">
+                            02
+                        </div>
+
+                        <h3>
+                            Story First
+                        </h3>
+
+                        <p>
+                            Visual beauty supports the narrative.
+                            Every frame should have purpose, emotion
+                            and context.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card reveal">
+
+                        <div class="why-icon">
+                            03
+                        </div>
+
+                        <h3>
+                            Detail Driven
+                        </h3>
+
+                        <p>
+                            From the first concept to the final export,
+                            attention is given to the small details
+                            that shape the overall experience.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card reveal">
+
+                        <div class="why-icon">
+                            04
+                        </div>
+
+                        <h3>
+                            Modern Visuals
+                        </h3>
+
+                        <p>
+                            Contemporary filmmaking techniques are
+                            combined with timeless storytelling principles.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card reveal">
+
+                        <div class="why-icon">
+                            05
+                        </div>
+
+                        <h3>
+                            Flexible Creation
+                        </h3>
+
+                        <p>
+                            Projects can range from short-form digital
+                            content to large cinematic documentaries
+                            and mythology-based narratives.
+                        </p>
+
+                    </div>
+
+
+                    <div class="why-card reveal">
+
+                        <div class="why-icon">
+                            06
+                        </div>
+
+                        <h3>
+                            One Creative Vision
+                        </h3>
+
+                        <p>
+                            Concept, storytelling, visuals, editing
+                            and finishing can be developed around
+                            one unified creative direction.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CTA
+             ===================================================== -->
+
+        <section class="cta">
+
+            <div class="container">
+
+                <div class="cta-content reveal">
+
+                    <div class="eyebrow">
+                        Let's Create
+                    </div>
+
+                    <h2>
+                        Your Story.
+                        <br>
+                        Our <span>Vision.</span>
+                    </h2>
+
+                    <p>
+                        Have an idea, film, documentary, brand project
+                        or visual story in mind? Let's turn the concept
+                        into a cinematic experience.
+                    </p>
+
+                    <a href="#contact" class="btn btn-gold">
+                        Start A Conversation
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTACT
+             ===================================================== -->
+
+        <section class="section section-soft" id="contact">
+
+            <div class="container">
+
+                <div class="center reveal">
+
+                    <div class="eyebrow">
+                        Get In Touch
+                    </div>
+
+                    <h2 class="section-title">
+                        Start Your <span>Project</span>
+                    </h2>
+
+                    <p class="section-text">
+                        Tell us about your idea, requirement or project.
+                        We will use the information to understand the
+                        creative direction and scope.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+
+                    <div class="contact-info reveal">
+
+                        <h3>
+                            Let's Talk.
+                        </h3>
+
+                        <p>
+                            Whether you need cinematic editing,
+                            photography, videography, documentary
+                            production, storytelling or creative
+                            visual content — connect with Navyansh Films.
+                        </p>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-symbol">
+                                ✉
+                            </div>
+
+                            <div>
+
+                                <small>Email</small>
+
+                                <a href="mailto:hello@navyanshfilms.com">
+                                    hello@navyanshfilms.com
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-symbol">
+                                ☎
+                            </div>
+
+                            <div>
+
+                                <small>Phone</small>
+
+                                <a href="tel:+910000000000">
+                                    +91 00000 00000
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-symbol">
+                                ◎
+                            </div>
+
+                            <div>
+
+                                <small>Location</small>
+
+                                <span>
+                                    India
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <div class="contact-symbol">
+                                ◈
+                            </div>
+
+                            <div>
+
+                                <small>Availability</small>
+
+                                <span>
+                                    Creative Projects & Collaborations
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM -->
+
+                    <form
+                        class="contact-form reveal"
+                        id="contactForm">
+
+                        <div class="form-row">
+
+                            <div class="field">
+
+                                <label for="name">
+                                    Your Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter your name"
+                                    required>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="email">
+                                    Email
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter your email"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="field">
+
+                                <label for="phone">
+                                    Phone
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Enter phone number">
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="service">
+                                    Service
+                                </label>
+
+                                <select
+                                    id="service"
+                                    name="service">
+
+                                    <option value="">
+                                        Select service
+                                    </option>
+
+                                    <option>
+                                        Video Editing
+                                    </option>
+
+                                    <option>
+                                        Cinematography
+                                    </option>
+
+                                    <option>
+                                        Photography
+                                    </option>
+
+                                    <option>
+                                        Videography
+                                    </option>
+
+                                    <option>
+                                        Storytelling
+                                    </option>
+
+                                    <option>
+                                        Script Writing
+                                    </option>
+
+                                    <option>
+                                        Voice Over
+                                    </option>
+
+                                    <option>
+                                        Graphic Design
+                                    </option>
+
+                                    <option>
+                                        Motion Graphics
+                                    </option>
+
+                                    <option>
+                                        Documentary
+                                    </option>
+
+                                    <option>
+                                        Mythology Film
+                                    </option>
+
+                                    <option>
+                                        Brand Content
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="message">
+                                Project Details
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Tell us about your project..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-gold form-submit">
+
+                            Send Project Enquiry
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-top">
+
+
+                <div class="footer-brand">
+
+                    <a href="#home" class="brand">
+
+                        <div class="brand-mark">
+
+                            <div class="brand-mark-inner"></div>
+
+                        </div>
+
+                        <div class="brand-name">
+                            NAVYANSH FILMS
+                        </div>
+
+                    </a>
+
+
+                    <p>
+                        Cinematic storytelling, filmmaking and visual
+                        creation for brands, creators, documentaries
+                        and original stories.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Explore
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="#about">
+                            About
+                        </a>
+
+                        <a href="#services">
+                            Services
+                        </a>
+
+                        <a href="#portfolio">
+                            Portfolio
+                        </a>
+
+                        <a href="#process">
+                            Process
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Services
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="#services">
+                            Video Editing
+                        </a>
+
+                        <a href="#services">
+                            Cinematography
+                        </a>
+
+                        <a href="#services">
+                            Photography
+                        </a>
+
+                        <a href="#services">
+                            Documentary
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <div class="footer-title">
+                        Connect
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="#contact">
+                            Contact
+                        </a>
+
+                        <a href="#">
+                            Instagram
+                        </a>
+
+                        <a href="#">
+                            YouTube
+                        </a>
+
+                        <a href="#">
+                            Facebook
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © <span id="year"></span> Navyansh Films.
+                    All Rights Reserved.
+                </span>
+
+                <span>
+                    Cinema • Story • Creation
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         PURE VANILLA JS
+         ========================================================= -->
+
+    <script>
+
+        /* ---------------------------------------------------------
+           YEAR
+           --------------------------------------------------------- */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* ---------------------------------------------------------
+           NAVBAR SCROLL
+           --------------------------------------------------------- */
+
+        const navbar = document.getElementById("navbar");
+
+        function handleNavbar() {
+
+            if (window.scrollY > 40) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+
+        }
+
+        window.addEventListener(
+            "scroll",
+            handleNavbar,
+            { passive: true }
+        );
+
+        handleNavbar();
+
+
+        /* ---------------------------------------------------------
+           MOBILE MENU
+           --------------------------------------------------------- */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuToggle.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+            document.body.classList.toggle(
+                "menu-open"
+            );
+
+            if (navLinks.classList.contains("active")) {
+                menuToggle.textContent = "×";
+            } else {
+                menuToggle.textContent = "☰";
+            }
+
+        });
+
+
+        /* ---------------------------------------------------------
+           CLOSE MOBILE MENU AFTER CLICK
+           --------------------------------------------------------- */
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    navLinks.classList.remove("active");
+
+                    document.body.classList.remove(
+                        "menu-open"
+                    );
+
+                    menuToggle.textContent = "☰";
+
+                });
+
+            });
+
+
+        /* ---------------------------------------------------------
+           SCROLL REVEAL
+           --------------------------------------------------------- */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(function (element) {
+
+            revealObserver.observe(element);
+
+        });
+
+
+        /* ---------------------------------------------------------
+           CONTACT FORM
+           --------------------------------------------------------- */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document.getElementById("name").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const phone =
+                    document.getElementById("phone").value.trim();
+
+                const service =
+                    document.getElementById("service").value.trim();
+
+                const message =
+                    document.getElementById("message").value.trim();
+
+
+                const subject =
+                    encodeURIComponent(
+                        "New Project Enquiry - Navyansh Films"
+                    );
+
+
+                const body =
+                    encodeURIComponent(
+                        "Name: " + name + "\n\n" +
+                        "Email: " + email + "\n\n" +
+                        "Phone: " + phone + "\n\n" +
+                        "Service: " + service + "\n\n" +
+                        "Project Details:\n" +
+                        message
+                    );
+
+
+                window.location.href =
+                    "mailto:hello@navyanshfilms.com" +
+                    "?subject=" + subject +
+                    "&body=" + body;
+
+            }
+        );
+
+
+        /* ---------------------------------------------------------
+           SMOOTH ANCHOR FALLBACK
+           --------------------------------------------------------- */
+
+        document
+            .querySelectorAll('a[href^="#"]')
+            .forEach(function (anchor) {
+
+                anchor.addEventListener(
+                    "click",
+                    function (event) {
+
+                        const targetId =
+                            anchor.getAttribute("href");
+
+                        if (
+                            !targetId ||
+                            targetId === "#"
+                        ) {
+                            return;
+                        }
+
+                        const target =
+                            document.querySelector(
+                                targetId
+                            );
+
+                        if (!target) {
+                            return;
+                        }
+
+                        event.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                    }
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>
